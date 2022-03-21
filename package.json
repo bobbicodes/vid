@@ -1,0 +1,23 @@
+{
+  "name": "vid",
+  "version": "0.0.1",
+  "description": "Electron Video Editor",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/porkostomus/vid.git"
+  },
+  "author": "Bobby Towers",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/porkostomus/vid/issues"
+  },
+  "homepage": "https://github.com/porkostomus/vid#readme",
+  "devDependencies": {
+    "electron": "^17.1.2"
+  }
+}
