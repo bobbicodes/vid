@@ -18,7 +18,6 @@ const playbackAnimation = document.getElementById('playback-animation');
 const fullscreenButton = document.getElementById('fullscreen-button');
 const videoContainer = document.getElementById('video-container');
 const fullscreenIcons = fullscreenButton.querySelectorAll('use');
-const pipButton = document.getElementById('pip-button');
 
 const videoWorks = !!document.createElement('video').canPlayType;
 if (videoWorks) {
@@ -206,22 +205,6 @@ function updateFullscreenButton() {
   }
 }
 
-// togglePip toggles Picture-in-Picture mode on the video
-async function togglePip() {
-  try {
-    if (video !== document.pictureInPictureElement) {
-      pipButton.disabled = true;
-      await video.requestPictureInPicture();
-    } else {
-      await document.exitPictureInPicture();
-    }
-  } catch (error) {
-    console.error(error);
-  } finally {
-    pipButton.disabled = false;
-  }
-}
-
 // hideControls hides the video controls when not in use
 // if the video is paused, the controls must remain visible
 function hideControls() {
@@ -259,9 +242,6 @@ function keyboardShortcuts(event) {
     case 'f':
       toggleFullScreen();
       break;
-    case 'p':
-      togglePip();
-      break;
   }
 }
 
@@ -285,11 +265,5 @@ volume.addEventListener('input', updateVolume);
 volumeButton.addEventListener('click', toggleMute);
 fullscreenButton.addEventListener('click', toggleFullScreen);
 videoContainer.addEventListener('fullscreenchange', updateFullscreenButton);
-pipButton.addEventListener('click', togglePip);
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (!('pictureInPictureEnabled' in document)) {
-    pipButton.classList.add('hidden');
-  }
-});
 document.addEventListener('keyup', keyboardShortcuts);
